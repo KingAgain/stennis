@@ -1,18 +1,15 @@
 import React from 'react'
 import { useState } from 'react';
 import { Button, Card, Divider, Tag } from 'antd'
-
+ 
 interface myProps {
   buttonNames: string[][],
   drawSize: number,
   setButtonNames: React.Dispatch<React.SetStateAction<string[][]>>,
   isDisabled: boolean,
-  correctAnswer: string[][],
-  userAnswer: string[][],
-  answerStatus: number[][]
+  correctAnswer: string[][]
 }
 const CCBracket: React.FC<myProps> = (props: myProps) => {
-  console.log(props)
   const buttonsData = ['八强', '1/8区', '2/8区', '3/8区', '4/8区', '5/8区', '6/8区', '7/8区', '8/8区'];
   const [selectedButton, setSelectedButton] = useState<string | null>(buttonsData[0]);
   const handleZoneButtonClick = (label: string) => {
@@ -37,7 +34,6 @@ const CCBracket: React.FC<myProps> = (props: myProps) => {
         handleDrawChange(round + 1, Math.floor(row / 2), player)
       }
     }
-    console.log(round, row, player)
     const newButtonNames = [...props.buttonNames];
     newButtonNames[round][row] = player;
     props.setButtonNames(newButtonNames);
@@ -67,22 +63,34 @@ const CCBracket: React.FC<myProps> = (props: myProps) => {
         if (drawPos != 0) {
           totRound = round;
         }
+
+        let isBye = false;
+        if(props.buttonNames[totRound][totRow] == 'BYE' && !props.isDisabled){
+          isBye = true;
+        }
+        let isNotAnswered = false;
+        if(props.buttonNames[totRound][totRow] == '' && props.isDisabled){
+          isNotAnswered = true;
+        }
+        let isAnsweredCorrectly = false;
+        if(props.buttonNames[totRound][totRow] == props.correctAnswer[totRound][totRow] && props.correctAnswer[totRound][totRow] != '' && props.isDisabled){
+          isAnsweredCorrectly = true;
+        }
+
         roundButtons.push(
           <Button
             className='drawButton'
-            disabled={(props.buttonNames[totRound][totRow] == 'BYE' && !props.isDisabled)
-              || (props.isDisabled && (props.answerStatus[totRound][totRow] == -1))}
+            disabled={(isBye || isNotAnswered || isAnsweredCorrectly)}
             onClick={(colSize != 1 && !props.isDisabled)
               ? () => handleDrawClick(totRound, totRow) : undefined}
-            type={props.isDisabled && props.answerStatus[totRound][totRow] == 1
-              ? 'primary' : 'default'}
-            icon={props.isDisabled && props.answerStatus[totRound][totRow] == -1 && props.correctAnswer[totRound][totRow] != ''
+            type={(isAnsweredCorrectly ? 'primary' : 'default')}
+            icon={props.isDisabled && !isAnsweredCorrectly
               ? <span style={{ position: 'absolute', top: '-1rem', right: 0 }}>
                 <Tag color="#108ee9">{props.correctAnswer[totRound][totRow]}</Tag>
               </span>
               : undefined}
           >
-            {props.isDisabled ? props.userAnswer[totRound][totRow] : props.buttonNames[totRound][totRow]}
+            {props.buttonNames[totRound][totRow]}
           </Button>
         );
       }

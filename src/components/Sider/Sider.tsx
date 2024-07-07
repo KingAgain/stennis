@@ -14,7 +14,7 @@ const options: {[key:string]: (string | never)[] }= {
   '巡回赛历': [],
 };
 const sites: {[key:string]: (string | never) } = {
-  '2024马德里' : '/bc/1',
+  '2024马德里' : '/bc/1/2024/S',
   '单打世界排名' : '/rank/syear',
   '双打世界排名' : '/rank/dyear',
   '单打冠军排名' : '/rank/srace',

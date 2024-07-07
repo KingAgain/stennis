@@ -2,11 +2,11 @@ import {
   createHashRouter,
   Navigate,
 } from "react-router-dom";
+import PLayout from '../pages/Layout'
 import PHome from '../pages/home'
-import PBc from '../pages/bracket_challenge'
-import PBcM from '../pages/bracket_challenge_main'
-import CCAnalytics from '../components/CAnalytics/CAnalytics'
-import CCRank from '../components/CRank/CRank'
+import PBracketChanllenge from '../pages/bracket_challenge'
+import PBracketChanllengeAnalytics from '../pages/bracket_chanllenge_analytics'
+import CCRank from '../pages/bracker_challenge_rank'
 import PRank from '../pages/rank/rank'
 
 
@@ -15,49 +15,30 @@ import PRank from '../pages/rank/rank'
 const router = createHashRouter([
   {
     path: '/',
-    element: <PHome />,
+    element: <PLayout />,
     children:[{
-      path:"/bc/:bcid",
-      element: <PBc />,
+      index:true,
+      element: <PHome />,
+    },{
+      path:"/bc/:bcid/:year/:type",
       children:[{
         index:true,
-        element: <PBcM />,
+        element: <PBracketChanllenge />,
       },{
-        path:"/bc/:bcid/analytics",
-        element: <CCAnalytics />,
+        path:"/bc/:bcid/:year/:type/analytics",
+        element: <PBracketChanllengeAnalytics />,
       },{
-        path:"/bc/:bcid/rank",
+        path:"/bc/:bcid/:year/:type/rank",
         element: <CCRank />,
       },]
     },{
-      path:"/rank",
-      element: <PRank />,
-      children:[
-      {
-        path:"/rank/syear",
-        element: <PRank />
-      },
-      {
-        path:"/rank/dyear",
-        element: <PRank />
-      },
-      {
-        path:"/rank/srace",
-        element: <PRank />
-      },
-      {
-        path:"/rank/drace",
-        element: <PRank />
-      },
-      {
-        path:"/rank/stats",
-        element: <PRank />
-      },]
+      path:"/rank/:type",
+      element: <PRank />
     }]
   },
   {
     path: 'test',
-    element: <PBc/>,
+    element: <PBracketChanllenge/>,
   },
   {
     path: '*',
