@@ -1,8 +1,8 @@
 import {
-  createHashRouter,
+  createBrowserRouter,
   Navigate,
 } from "react-router-dom";
-import PLayout from '../pages/Layout'
+import PNavbar from '../pages/navbar'
 import PHome from '../pages/home'
 import PBracketChanllenge from '../pages/bracket_challenge'
 import PBracketChanllengeAnalytics from '../pages/bracket_chanllenge_analytics'
@@ -12,10 +12,10 @@ import PRank from '../pages/rank/rank'
 
 
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/',
-    element: <PLayout />,
+    element: <PNavbar />,
     children:[{
       index:true,
       element: <PHome />,
@@ -32,13 +32,13 @@ const router = createHashRouter([
         element: <CCRank />,
       },]
     },{
-      path:"/rank/:type",
+      path:"/ranking/:type",
       element: <PRank />
     }]
   },
   {
     path: 'test',
-    element: <PBracketChanllenge/>,
+    element: <PHome/>,
   },
   {
     path: '*',
