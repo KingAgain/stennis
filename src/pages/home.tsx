@@ -24,10 +24,10 @@ const PHome: React.FC = () => {
   }
   return (
     <div className="flex items-start justify-center flex-wrap">
-      <Card className="h-[300px] w-[600px] m-8 min-w-[600px]">
+      <Card className="h-[300px] w-[600px] m-8 min-w-[600px]" shadow="md">
         <CSwiper {...swiperProps}/>
       </Card>
-      <Card className="h-[300px] aspect-video m-8 min-w-[600px]">
+      <Card className="h-[300px] aspect-video m-8 min-w-[600px]" shadow="md">
         <CardHeader>
           <p className="text-tiny text-black/60 uppercase font-bold">排名总览</p>
         </CardHeader>
@@ -66,7 +66,7 @@ const PHome: React.FC = () => {
           </Table>
         </CardBody>
       </Card>
-      <Card className=" m-8 max-w-[1264px]">
+      <Card className=" m-8 max-w-[1264px]" shadow="md">
         <CardBody>
           <div className="flex items-center justify-center">
             <div className="px-10">

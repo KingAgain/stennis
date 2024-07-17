@@ -7,8 +7,8 @@ import PHome from '../pages/home'
 import PBracketChanllenge from '../pages/bracket_challenge'
 import PBracketChanllengeAnalytics from '../pages/bracket_chanllenge_analytics'
 import CCRank from '../pages/bracker_challenge_rank'
-import PRank from '../pages/rank/rank'
-
+import PRank from '../pages/rank'
+import PCalendar from "../pages/calendar";
 
 
 
@@ -16,33 +16,36 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <PNavbar />,
-    children:[{
-      index:true,
+    children: [{
+      index: true,
       element: <PHome />,
-    },{
-      path:"/bc/:bcid/:year/:type",
-      children:[{
-        index:true,
+    }, {
+      path: "/bc/:bcid/:year/:type",
+      children: [{
+        index: true,
         element: <PBracketChanllenge />,
-      },{
-        path:"/bc/:bcid/:year/:type/analytics",
+      }, {
+        path: "/bc/:bcid/:year/:type/analytics",
         element: <PBracketChanllengeAnalytics />,
-      },{
-        path:"/bc/:bcid/:year/:type/rank",
+      }, {
+        path: "/bc/:bcid/:year/:type/rank",
         element: <CCRank />,
       },]
-    },{
-      path:"/ranking/:type",
+    }, {
+      path: "/ranking",
       element: <PRank />
+    },{
+      path: "/calendar",
+      element: <PCalendar />
     }]
   },
   {
     path: 'test',
-    element: <PHome/>,
+    element: <PHome />,
   },
   {
     path: '*',
-    element: <Navigate to="/bc/1" />
+    element: <Navigate to="/" />
   },
 ])
 

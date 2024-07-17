@@ -12,7 +12,9 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <NextUIProvider>
+      <main className='light'>
       <RouterProvider router={router} />
+      </main>
     </NextUIProvider>
 );
 } else {

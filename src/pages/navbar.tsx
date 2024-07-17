@@ -10,36 +10,15 @@ const PNavbar: React.FC = () => {
   }
   return (
     <div>
-      <Navbar isBordered={true}>
+      <Navbar isBordered={true} className='shadow-lg'>
         <NavbarBrand>
           <Icon width="32" height="32" />
           <p className="font-bold text-inherit">STennis</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <Dropdown>
-            <NavbarItem>
-              <DropdownTrigger>
-                <Button color='default' variant='light' endContent={icons.chevron}>官方排名</Button>
-              </DropdownTrigger>
-            </NavbarItem>
-            <DropdownMenu>
-              <DropdownItem showDivider={true} className='text-center'>
-                <Link href="/ranking/syear" size='sm' color='foreground'>单打世界排名</Link>
-              </DropdownItem>
-              <DropdownItem showDivider={true} className='text-center'>
-                <Link href="/ranking/dyear" size='sm' color='foreground'>双打世界排名</Link>
-              </DropdownItem>
-              <DropdownItem showDivider={true} className='text-center'>
-                <Link href="/ranking/srace" size='sm' color='foreground'>单打冠军排名</Link>
-              </DropdownItem >
-              <DropdownItem showDivider={true} className='text-center'>
-                <Link href="/ranking/drace" size='sm' color='foreground'>双打冠军排名</Link>
-              </DropdownItem >
-              <DropdownItem className='text-center'>
-                <Link href="/ranking/snextgen" size='sm' color='foreground'>统计数据</Link>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <NavbarItem>
+            <Button href="/ranking" color='default' variant='light'>官方排名</Button>
+          </NavbarItem>
           <NavbarItem>
             <Button color='default' variant='light'>巡回赛历</Button>
           </NavbarItem>

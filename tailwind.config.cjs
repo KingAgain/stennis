@@ -13,5 +13,16 @@ module.exports = {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui({
+    themes: {
+      light: {
+        layout:{
+          boxShadow: {
+            small: "0 5px 20px -5px rgba(0, 0, 0, 0.1)",
+            medium: "0 8px 30px rgba(0, 0, 0, 0.15)"
+          }
+        }
+      }
+    }
+  })],
 }
