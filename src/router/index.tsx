@@ -7,7 +7,7 @@ import PHome from '../pages/home'
 import PBracketChanllenge from '../pages/bracket_challenge'
 import PBracketChanllengeAnalytics from '../pages/bracket_chanllenge_analytics'
 import CCRank from '../pages/bracker_challenge_rank'
-import PRank from '../pages/rank'
+import PRank from '../pages/ranking'
 import PCalendar from "../pages/calendar";
 
 
@@ -37,6 +37,8 @@ const router = createBrowserRouter([
     },{
       path: "/calendar",
       element: <PCalendar />
+    },{
+      path: "/draw/:tourid",
     }]
   },
   {

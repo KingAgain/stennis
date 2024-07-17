@@ -11,17 +11,29 @@ const PNavbar: React.FC = () => {
   return (
     <div>
       <Navbar isBordered={true} className='shadow-lg'>
-        <NavbarBrand>
+        <NavbarBrand href="/" as={Link} className='text-black'>
           <Icon width="32" height="32" />
           <p className="font-bold text-inherit">STennis</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Button href="/ranking" color='default' variant='light'>官方排名</Button>
+            <Button href="/ranking" as={Link} color='default' variant='light'>官方排名</Button>
           </NavbarItem>
           <NavbarItem>
-            <Button color='default' variant='light'>巡回赛历</Button>
+            <Button href="/calendar" as={Link} color='default' variant='light'>巡回赛历</Button>
           </NavbarItem>
+          <Dropdown>
+            <NavbarItem>
+              <DropdownTrigger>
+                <Button color='default' variant='light' endContent={icons.chevron}>签表</Button>
+              </DropdownTrigger>
+            </NavbarItem>
+            <DropdownMenu>
+              <DropdownItem className='text-center'>
+                <Link href="/draw/1" as={Link} size='sm' color='foreground'>帕勒莫</Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
           <Dropdown>
             <NavbarItem>
               <DropdownTrigger>

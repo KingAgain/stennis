@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import CCUserInfo from "../../components/CUserInfo/CUserInfo";
 import CCBracket from '../../components/CBracketChallengeMain/CBracketChanllengeMain'
 import axios from 'axios';
-import { Skeleton, Card, message, Modal } from "antd";
+import { Card, message, Modal } from "antd";
+import { Skeleton } from "@nextui-org/skeleton";
 
 const PBracketChanllenge: React.FC = () => {
   const [tournamentName, setTournamentName] = useState('');
@@ -148,7 +149,7 @@ const PBracketChanllenge: React.FC = () => {
       correctAnswer: correctAnswer,
   }
   if(!isInfoLoaded){
-    return <Skeleton active />
+    return <Skeleton />
   }
   return (
       <div className='bc'>
